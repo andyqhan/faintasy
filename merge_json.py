@@ -13,7 +13,8 @@ def merge_json(directory):
     for player in files:
         with open(directory + player, 'r') as player_file:
             result.append(json.load(player_file))
+    flattened = [j for i in result for j in i]
     with open('big_nfl_data.json', 'w') as output:
-        json.dump(result, output)
+        json.dump(flattened, output)
     return
 
